@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #0000FF;
+            color: white;
+            padding: 1rem 0;
+            text-align: center; font-size: 1.2em;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .box {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            text-align: left;
+            width: 110mm;
+            height: 150mm;
+            box-sizing: border-box;
+            overflow: auto;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .box h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            width: 80vw;
+            height: 80vh;
+            overflow: auto;
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: black;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center; font-size: 1.2em;
+            padding: 1rem 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .sign-box {
+            margin-top: 2rem;
+            border: 1px dashed #000;
+            padding: 1rem;
+            text-align: center; font-size: 1.2em;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .download-button {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .download-button button {
+            background-color: #0000FF;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Template</h1>
+    </header>
+
+    <div class="container">
+        <div class="box" onclick="openModal('modal1')">
+            <h2>Sample Notary Statements</h2>
+        </div>
+        <div class="box" onclick="openModal('modal2')">
+            <h2>Property Management Agreement</h2>
+        </div>
+        <div class="box" onclick="openModal('modal3')">
+            <h2>Independent Contract Agreement</h2>
+        </div>
+        <div class="box" onclick="openModal('modal4')">
+            <h2>Commission Agreement</h2>
+        </div>
+        <div class="box" onclick="openModal('modal5')">
+            <h2>Loan Agreement</h2>
+        </div>
+        <div class="box" onclick="openModal('modal6')">
+            <h2>Sales Contract</h2>
+        </div>
+        <div class="box">
+            <h2>Box 7</h2>
+        </div>
+        <div class="box">
+            <h2>Box 8</h2>
+        </div>
+        <div class="box">
+            <h2>Box 9</h2>
+        </div>
+    </div>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Sample Notary Statements</h2>
+            <p>Sample Notary Statements are available for the following forms:</p>
+            <ul>
+                <li>Acknowledgements</li>
+                <li>Oaths</li>
+                <li>Depositions</li>
+                <li>Affidavits</li>
+                <li>Certificates</li>
+            </ul>
+            <h3>Acknowledgments</h3>
+            <p>An acknowledgment is a formal declaration before an authorized official such as a notary, by a person who has signed a document, that the document is his or her act. Acknowledgments are governed by the Uniform Acknowledgment Act. Five forms are listed in that act. The person acknowledging the document must personally appear before the notary.</p>
+            <p>In addition, the person may sign the document in the notary's presence, or acknowledge that the signature on the document is his or her own.</p>
+            <h3>Sample Acknowledgment</h3>
+            <p>State of New York</p>
+            <p>County of <input type="text" placeholder="___________"></p>
+            <p>On this, the <input type="text" placeholder="____"> day of <input type="text" placeholder="__________">, 20<input type="text" placeholder="__">, before me a notary public, the undersigned officer, personally appeared <input type="text" placeholder="_______________">, known to me (or satisfactorily proven) to be the person whose name is subscribed to the within instrument, and acknowledged that he executed the same for the purposes therein contained.</p>
+            <p>In witness hereof, I hereunto set my hand and official seal.</p>
+            <p>______________________________</p>
+            <p>Notary Public</p>
+            <div class="download-button">
+                <button onclick="downloadContent('modal1', 'Sample_Notary_Statements.txt')">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Property Management Agreement</h2>
+            <p>This Property Management Agreement (hereinafter referred to as the “Agreement”) is entered into on this <input type="text"> day of <input type="text">, by and between <input type="text" placeholder="Owner"> (hereinafter referred to as the “Owner”) and <input type="text" placeholder="Agent"> (hereinafter referred to as the “Agent”).</p>
+            <div class="download-button">
+                <button onclick="downloadContent('modal2', 'Property_Management_Agreement.txt')">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Independent Contract Agreement</h2>
+            <p><b>PARTIES</b></p>
+            <p>This Independent Contract Agreement (hereinafter referred to as the "Agreement") is entered into on <input type="text" placeholder="________"> (the "Effective Date"), by and between <input type="text" placeholder="Client"> (hereinafter referred to as the "Client") with an address of <input type="text" placeholder="Client Address">, and <input type="text" placeholder="Contractor"> (hereinafter referred to as the "Contractor") with an address of <input type="text" placeholder="Contractor Address"> (collectively referred to as the "Parties").</p>
+            <p><b>GENERAL</b></p>
+            <p>The Client agrees that the Contractor possesses the relevant experience, necessary qualifications, and abilities to provide services to the Client.</p>
+            <p><b>SERVICES</b></p>
+            <p>The duties of the Contractor towards the Client are listed below:</p>
+            <ol>
+                <li><input type="text" placeholder="Service 1"></li>
+                <li><input type="text" placeholder="Service 2"></li>
+                <li><input type="text" placeholder="Service 3"></li>
+                <li><input type="text" placeholder="Service 4"></li>
+                <li><input type="text" placeholder="Service 5"></li>
+            </ol>
+            <p><b>COMPENSATION</b></p>
+            <p>The Parties agree that the Client will compensate the Contractor through the following means:</p>
+            <textarea placeholder="Details of Compensation" style="width:100%;height:50px;"></textarea>
+            <p><b>TERM</b></p>
+            <p>This Agreement shall be effective on the date of signing this Agreement (the "Effective Date") and will terminate upon the completion of the provision of the services set forth in this Agreement.</p>
+            <div class="download-button">
+                <button onclick="downloadContent('modal3', 'Independent_Contract_Agreement.txt')">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>Commission Agreement</h2>
+            <p><b>PARTIES</b></p>
+            <p>This Commission Agreement (hereinafter referred to as the "Agreement") is entered into on <input type="text" placeholder="Effective Date">, by and between <input type="text" placeholder="Principal"> with an address of <input type="text" placeholder="Principal Address"> (hereinafter referred to as the "Principal") and <input type="text" placeholder="Agent"> with an address of <input type="text" placeholder="Agent Address"> (hereinafter referred to as the "Agent") (collectively referred to as the "Parties").</p>
+            <p><b>AGREEMENT</b></p>
+            <p>The Parties hereby agree that the Principal authorizes the Agent to sell the product on behalf of the Principal and indemnify the Agent as the authorized agent of the Principal for such sale.</p>
+            <p><b>THE SALE</b></p>
+            <p>The Parties agree that the prices of the product will be set by the Principal. The Principal will obtain and provide the promotional materials (if any) for the Agent to use and obtain sales, and the Principal will provide a Sales Agreement to the Agent for the sale of the product.</p>
+            <p><b>TERM</b></p>
+            <p>This Agreement shall be effective on the date of signing this Agreement (hereinafter referred to as the "Effective Date") and will end on <input type="text" placeholder="End Date">.</p>
+            <p><b>GEOGRAPHY</b></p>
+            <p>The Parties agree that the Agent will sell the product in the following geographical area/territory: <input type="text" placeholder="Territory">, and will not sell the product anywhere else.</p>
+            <div class="download-button">
+                <button onclick="downloadContent('modal4', 'Commission_Agreement.txt')">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal5')">&times;</span>
+            <h2>Loan Agreement</h2>
+            <p>This Loan Agreement is entered into on <input type="text"> by and between <input type="text" placeholder="Lender"> and <input type="text" placeholder="Borrower"> for a loan amount of $<input type="text">.</p>
+            <div class="download-button">
+                <button onclick="downloadContent('modal5', 'Loan_Agreement.txt')">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal6')">&times;</span>
+            <h2>Sales Contract</h2>
+            <p><b>PARTIES</b></p>
+            <p>This Sales Contract (hereinafter referred to as the "Contract") is entered into on <input type="text" placeholder="Effective Date">, by and between <input type="text" placeholder="Seller"> with an address of <input type="text" placeholder="Seller Address"> (hereinafter referred to as the "Seller") and <input type="text" placeholder="Customer"> with an address of <input type="text" placeholder="Customer Address"> (hereinafter referred to as the "Customer") (collectively referred to as the "Parties").</p>
+            <p><b>GOODS AND PRICE</b></p>
+            <p>The goods that the Seller is selling to the Customer are enlisted below with their quantities (hereinafter referred to as the "Goods").</p>
+            <table border="1" style="width:100%;text-align:left;">
+                <tr>
+                    <th>Good</th>
+                    <th>Quantity</th>
+                    <th>Price per Unit</th>
+                    <th>Total Price</th>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+            </table>
+            <p><b>PRICE AND PAYMENTS</b></p>
+            <p>The Seller hereby agrees to sell the Goods to the Customer for an amount of $<input type="text">.</p>
+            <p>The Seller will provide an invoice to the Customer at the time of delivery.</p>
+            <p>All invoices are to be paid in full at least within thirty (30) days.</p>
+            <p>Any balances not paid within thirty (30) days will be subject to a five percent (5%) late payment penalty.</p>
+            <p><b>DELIVERY AND SHIPPING</b></p>
+            <p>The Goods will be delivered to the Customer at the following address: <input type="text" placeholder="Delivery Address">.</p>
+            <div class="download-button">
+                <button onclick="downloadContent('modal6', 'Sales_Contract.txt')">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Template Design. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function downloadContent(modalId, filename) {
+            const modal = document.getElementById(modalId);
+            const content = modal.innerText || modal.textContent;
+            const element = document.createElement('a');
+            const file = new Blob([content], { type: 'text/plain' });
+            element.href = URL.createObjectURL(file);
+            element.download = filename;
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+</body>
+</html>
