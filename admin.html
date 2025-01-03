@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <table id="logins">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Template Selected</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        async function fetchLogins() {
+            const response = await fetch('/api/admin');
+            const logins = await response.json();
+
+            const tableBody = document.querySelector('#logins tbody');
+            tableBody.innerHTML = '';
+
+            logins.forEach(login => {
+                const row = `
+                    <tr>
+                        <td>${login.username}</td>
+                        <td>${login.templateSelected || 'None'}</td>
+                        <td>${new Date(login.timestamp).toLocaleString()}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        fetchLogins();
+    </script>
+</body>
+</html>
