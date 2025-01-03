@@ -7,17 +7,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Verdana', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #f4f4f4, #e6e9f0);
+            color: #333;
         }
 
         header {
-            background-color: #0000FF;
+            background: linear-gradient(135deg, #0000FF, #0056b3);
             color: white;
             padding: 1rem 0;
-            text-align: center; font-size: 1.2em;
+            text-align: center;
+            font-size: 1.8em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
         }
 
         .container {
@@ -28,10 +32,10 @@
         }
 
         .box {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border: 2px solid #d1d1d1;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 1rem;
             text-align: left;
             width: 110mm;
@@ -40,6 +44,15 @@
             overflow: auto;
             cursor: pointer;
             position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-image: url('your-logo-path.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
         }
 
         .box h2 {
@@ -48,7 +61,13 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.7);
+            padding: 0.5rem;
+            border-radius: 5px;
         }
 
         .modal {
@@ -58,38 +77,41 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
-            background-color: white;
+            background: linear-gradient(135deg, #ffffff, #eaeaea);
             padding: 2rem;
-            border-radius: 5px;
+            border-radius: 10px;
             width: 80vw;
             height: 80vh;
             overflow: auto;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
         .modal .close {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            font-size: 1.5rem;
-            color: black;
+            font-size: 1.8rem;
+            color: #333;
             cursor: pointer;
         }
 
         footer {
-            background-color: #333;
+            background: linear-gradient(135deg, #333, #555);
             color: white;
-            text-align: center; font-size: 1.2em;
+            text-align: center;
+            font-size: 1.2em;
             padding: 1rem 0;
             position: relative;
             bottom: 0;
             width: 100%;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .download-button {
@@ -99,13 +121,21 @@
 
         .download-button button,
         .save-button button {
-            background-color: #0000FF;
+            background: linear-gradient(135deg, #0000FF, #0056b3);
             color: white;
             padding: 0.5rem 1rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .download-button button:hover,
+        .save-button button:hover {
+            background: linear-gradient(135deg, #0056b3, #0000FF);
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -208,83 +238,6 @@
             <p><b>Transferee's Signature:</b> ____________________________</p>
             <div class="download-button">
                 <button onclick="downloadPDF('content-modal2', 'Bill_of_Sale.pdf')">Download as PDF</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal3" class="modal">
-        <div class="modal-content" id="content-modal3">
-            <span class="close" onclick="closeModal('modal3')">&times;</span>
-            <h2>Independent Contract Agreement</h2>
-            <p>Content for Independent Contract Agreement goes here...</p>
-            <div class="download-button">
-                <button onclick="downloadPDF('content-modal3', 'Independent_Contract_Agreement.pdf')">Download as PDF</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal4" class="modal">
-        <div class="modal-content" id="content-modal4">
-            <span class="close" onclick="closeModal('modal4')">&times;</span>
-            <h2>Commission Agreement</h2>
-            <p>Content for Commission Agreement goes here...</p>
-            <div class="download-button">
-                <button onclick="downloadPDF('content-modal4', 'Commission_Agreement.pdf')">Download as PDF</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal5" class="modal">
-        <div class="modal-content" id="content-modal5">
-            <span class="close" onclick="closeModal('modal5')">&times;</span>
-            <h2>Loan Agreement</h2>
-            <p>Content for Loan Agreement goes here...</p>
-            <div class="download-button">
-                <button onclick="downloadPDF('content-modal5', 'Loan_Agreement.pdf')">Download as PDF</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal6" class="modal">
-        <div class="modal-content" id="content-modal6">
-            <span class="close" onclick="closeModal('modal6')">&times;</span>
-            <h2>Sales Contract</h2>
-            <p>Content for Sales Contract goes here...</p>
-            <div class="download-button">
-                <button onclick="downloadPDF('content-modal6', 'Sales_Contract.pdf')">Download as PDF</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal7" class="modal">
-        <div class="modal-content" id="content-modal7">
-            <span class="close" onclick="closeModal('modal7')">&times;</span>
-            <h2>Box 7</h2>
-            <p>Content for Box 7 goes here...</p>
-            <div class="download-button">
-                <button onclick="downloadPDF('content-modal7', 'Box_7.pdf')">Download as PDF</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal8" class="modal">
-        <div class="modal-content" id="content-modal8">
-            <span class="close" onclick="closeModal('modal8')">&times;</span>
-            <h2>Box 8</h2>
-            <p>Content for Box 8 goes here...</p>
-            <div class="download-button">
-                <button onclick="downloadPDF('content-modal8', 'Box_8.pdf')">Download as PDF</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal9" class="modal">
-        <div class="modal-content" id="content-modal9">
-            <span class="close" onclick="closeModal('modal9')">&times;</span>
-            <h2>Box 9</h2>
-            <p>Content for Box 9 goes here...</p>
-            <div class="download-button">
-                <button onclick="downloadPDF('content-modal9', 'Box_9.pdf')">Download as PDF</button>
             </div>
         </div>
     </div>
